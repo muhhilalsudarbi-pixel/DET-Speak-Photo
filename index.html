@@ -1,13 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>DET — Speak About the Photo (5 sentences, 90s)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <style>
+    :root{--grey:#e4e4e4;--text:#3c3c3c;--success:#2ec748;--danger:#e74c3c;--primary:#4c82f7;--bg:#fafafa}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:"Fredoka",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;display:grid;place-items:center;min-height:100vh}
+    .app{width:min(980px,92vw);background:#fff;border:1px solid var(--grey);border-radius:20px;box-shadow:0 12px 30px rgba(0,0,0,.06);overflow:hidden;margin:20px 0 40px}
+    header{display:flex;align-items:center;gap:14px;padding:18px 22px;border-bottom:1px solid var(--grey)}
+    .logo{width:42px;height:42px;display:grid;place-items:center;border-radius:12px;background:#e9f2ff;color:var(--primary);font-weight:700}
+    header h1{font-size:20px;font-weight:700;margin:0}.sub{margin-left:auto;font-size:13px;color:#6b7280}
+    .toolbar{display:grid;grid-template-columns:1fr auto;gap:14px;padding:14px 22px;align-items:center;border-bottom:1px solid var(--grey)}
+    .controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    .badge{font-size:12px;padding:6px 10px;border-radius:999px;background:#eef2ff;color:#3442ad;border:1px solid #dbe3ff}
+    select,button{font-family:inherit;font-size:14px;padding:10px 14px;border-radius:12px;border:1px solid var(--grey);background:#fff;transition:transform .12s ease,box-shadow .2s ease,border-color .2s ease,background-color .2s ease,opacity .2s ease}
+    select{min-width:220px;cursor:pointer}
+    .ghost{border-style:dashed;color:#64748b}
+    button.primary{background:var(--success);border-color:#27aa3d;color:#fff;box-shadow:0 3px 0 #27aa3d}
+    button.warn{background:#ffe8c2;border-color:#ffd28a;color:#8a4b00}
+    button:hover,select:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(0,0,0,.08)}
+    button:active{transform:translateY(0) scale(.98);box-shadow:0 2px 8px rgba(0,0,0,.06)}
+    button:focus-visible,select:focus-visible{outline:3px solid #c7d2fe;outline-offset:2px;border-color:#c7d2fe}
+    button:disabled{opacity:.6;cursor:not-allowed;box-shadow:none;transform:none}
+    .toggle{display:flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid var(--grey);border-radius:12px;background:#fff;font-size:14px;cursor:pointer;transition:transform .12s}
+    .toggle:hover{transform:translateY(-1px)}
+    .toggle input{appearance:none;-webkit-appearance:none;width:18px;height:18px;border-radius:6px;border:2px solid #9aa3b2;display:grid;place-items:center}
+    .toggle input:checked{background:var(--primary);border-color:var(--primary)}
+    .toggle input:checked::after{content:"✓";font-size:12px;color:#fff;transform:translateY(-1px)}
+    .timer{margin-left:auto;display:flex;align-items:center;gap:10px;font-weight:600}
+    .timer .count{width:70px;text-align:center;padding:8px 10px;border:1px solid var(--grey);border-radius:10px}
+    .progressbar{position:relative;height:9px;background:#eef2ff;border-radius:999px;overflow:hidden}
+    .progressbar>i{position:absolute;left:0;top:0;bottom:0;width:0%;background:linear-gradient(90deg,#7aa4ff,#4c82f7);transition:width .35s ease}
+    .task{padding:20px 22px 10px;display:grid;gap:12px;border-bottom:1px solid var(--grey)}
+    .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+    .pill{background:#f3f4f6;border:1px solid #e5e7eb;padding:6px 10px;border-radius:12px;font-size:12px}
+    .panel{border:1px solid var(--grey);border-radius:14px;padding:12px;background:#fbfbfb;animation:fadeIn .2s ease both}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(2px)}to{opacity:1;transform:none}}
+    .muted{color:#6b7280}
+    .karaoke{font-family:ui-monospace,Menlo,Consolas,monospace;background:#fff;border:1px dashed var(--grey);border-radius:12px;padding:12px;min-height:44px;overflow-x:auto}
+    .word{display:inline-block;margin:0 2px;padding:2px 4px;border-radius:6px}
+    .word.ok{background:#eaf9ef}.word.bad{background:#ffe9e7;text-decoration:underline wavy var(--danger)}.word.miss{background:#fff5d3;color:#8a4b00}.word.extra{background:#f1f5f9;color:#475569}
+    .statgrid{display:grid;grid-template-columns:repeat(4,minmax(90px,1fr));gap:10px}
+    .stat{border:1px solid var(--grey);border-radius:12px;padding:10px;background:#fff;text-align:center}
+    .stat .h{font-size:12px;color:#6b7280}.stat .v{font-size:18px;font-weight:700}
+    .help{padding:0 22px 18px}
+    details{border:1px dashed var(--grey);border-radius:12px;padding:10px 12px;background:#fcfcff}
+    summary{cursor:pointer;font-weight:600;margin:6px 0}
+    .guide-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+    .guide-card{border:1px dashed var(--grey);border-radius:12px;padding:10px;background:#fcfcff}
+    .guide-card h4{margin:0 0 6px;font-size:14px}
+    .guide-card ul{margin:0;padding-left:18px}
+    @media(max-width:900px){.guide-grid{grid-template-columns:1fr}}
+    @media(max-width:720px){.statgrid{grid-template-columns:repeat(2,1fr)}}
+    @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+  </style>
 </head>
 <body>
 <div class="app" id="app">
@@ -34,7 +85,7 @@
       <span class="badge">Options</span>
       <label class="toggle"><input type="checkbox" id="showTarget"> Show target</label>
       <label class="toggle"><input type="checkbox" id="guideToggle"> Show guide</label>
-      <label class="toggle"><input type="checkbox" id="fullToggle"> Full Set Mode (1–5)</label>
+      <label class="toggle"><input type="checkbox" id="fullToggle"> Full Set (1–5)</label>
       <label class="toggle"><input type="checkbox" id="timerToggle" checked> Use 90s timer</label>
 
       <button id="startBtn" class="primary">Start</button>
@@ -99,45 +150,35 @@
       </div>
     </div>
   </section>
-  
-<section class="help">
-  <details open>
-    <summary>🎧 Record to File (MediaRecorder) — 100% free in browser</summary>
-    <div class="row" style="gap:8px;flex-wrap:wrap">
-      <button id="recFileBtn" class="warn">🎙️ Record to File</button>
-      <button id="stopFileBtn" disabled>■ Stop File</button>
-      <button id="downloadBtn" disabled>⬇ Download</button>
-      <span id="fileInfo" class="muted">—</span>
-    </div>
-    <audio id="playback" controls style="margin-top:8px; width:100%"></audio>
-  </details>
-</section>
 
   <!-- GUIDE -->
   <section class="help" id="guidePanel" style="display:none">
     <details open>
       <summary>🧠 Guided Template (5 sentences)</summary>
       <div class="guide-grid">
-        <div class="guide-card">
-          <h4>1) Opening</h4>
-          <ul><li>This picture shows…</li><li>In this photo, I can see…</li><li>The image portrays…</li></ul>
-        </div>
-        <div class="guide-card">
-          <h4>2) Description</h4>
-          <ul><li>They are wearing…</li><li>He/She is …-ing…</li><li>The group is … and looks…</li></ul>
-        </div>
-        <div class="guide-card">
-          <h4>3) Background</h4>
-          <ul><li>Behind them… the sky looks…</li><li>In the background, there are…</li><li>In the distance, I can see…</li></ul>
-        </div>
-        <div class="guide-card">
-          <h4>4) Inference</h4>
-          <ul><li>It seems that they might…</li><li>Perhaps they are… because…</li><li>This suggests they are…</li></ul>
-        </div>
-        <div class="guide-card">
-          <h4>5) Reflection</h4>
-          <ul><li>This picture reminds me of…</li><li>Looking at this photo, I feel…</li><li>It highlights the importance of…</li></ul>
-        </div>
+        <div class="guide-card"><h4>1) Opening</h4><ul><li>This picture shows…</li><li>In this photo, I can see…</li><li>The image portrays…</li></ul></div>
+        <div class="guide-card"><h4>2) Description</h4><ul><li>They are wearing…</li><li>He/She is …-ing…</li><li>The group is … and looks…</li></ul></div>
+        <div class="guide-card"><h4>3) Background</h4><ul><li>Behind them… the sky looks…</li><li>In the background, there are…</li><li>In the distance, I can see…</li></ul></div>
+        <div class="guide-card"><h4>4) Inference</h4><ul><li>It seems that they might…</li><li>Perhaps they are… because…</li><li>This suggests they are…</li></ul></div>
+        <div class="guide-card"><h4>5) Reflection</h4><ul><li>This picture reminds me of…</li><li>Looking at this photo, I feel…</li><li>It highlights the importance of…</li></ul></div>
+      </div>
+    </details>
+  </section>
+
+  <!-- REC → FILE -->
+  <section class="help">
+    <details>
+      <summary>🎧 Record to File (MediaRecorder)</summary>
+      <div class="row" style="gap:8px;flex-wrap:wrap">
+        <button id="recFileBtn" class="warn">🎙️ Record to File</button>
+        <button id="stopFileBtn" disabled>■ Stop File</button>
+        <button id="downloadBtn" disabled>⬇ Download</button>
+        <span id="fileInfo" class="muted">—</span>
+      </div>
+      <audio id="playback" controls style="margin-top:8px;width:100%"></audio>
+      <div class="muted" style="font-size:12px;margin-top:6px">
+        Web Speech API (SpeechSynthesis & SpeechRecognition) dan MediaRecorder adalah fitur standar gratis di Chrome/Edge/modern browsers.
+        SpeechRecognition hanya untuk mic live (tidak bisa transkrip file). Untuk transkrip file, butuh library tambahan (mis. Vosk/Whisper WASM) atau layanan cloud.
       </div>
     </details>
   </section>
@@ -148,16 +189,17 @@
       <summary>⭐ Custom Templates — create your own 5-sentence set</summary>
       <div class="custom-grid">
         <input type="text" id="cTitle" placeholder="Title (e.g., 🏟️ Stadium concert)"/>
-        <div class="row5">
-          <textarea id="cS1" rows="3" placeholder="1) Opening"></textarea>
-          <textarea id="cS2" rows="3" placeholder="2) Description"></textarea>
-          <textarea id="cS3" rows="3" placeholder="3) Background"></textarea>
-          <textarea id="cS4" rows="3" placeholder="4) Inference"></textarea>
-          <textarea id="cS5" rows="3" placeholder="5) Reflection"></textarea>
+        <div class="row" style="gap:10px;flex-wrap:wrap">
+          <textarea id="cS1" rows="3" style="flex:1;min-width:260px" placeholder="1) Opening"></textarea>
+          <textarea id="cS2" rows="3" style="flex:1;min-width:260px" placeholder="2) Description"></textarea>
+          <textarea id="cS3" rows="3" style="flex:1;min-width:260px" placeholder="3) Background"></textarea>
+          <textarea id="cS4" rows="3" style="flex:1;min-width:260px" placeholder="4) Inference"></textarea>
+          <textarea id="cS5" rows="3" style="flex:1;min-width:260px" placeholder="5) Reflection"></textarea>
         </div>
         <div class="row" style="gap:10px">
           <button id="saveCustomBtn" class="primary">Save Template</button>
           <button id="clearCustomBtn" class="ghost">Clear</button>
+          <button id="openCustomBtn2" class="ghost">Close</button>
         </div>
         <div class="custom-list" id="customList"></div>
       </div>
