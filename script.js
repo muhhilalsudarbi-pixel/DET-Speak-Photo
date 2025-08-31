@@ -21,77 +21,133 @@ window.addEventListener('DOMContentLoaded', () => {
   safeInit();
 });
 
-/***** ===== DATA: 10 SETS x 5 SENTENCES ===== *****/
+/***** ===== DATA: 18 SETS x 5 SENTENCES ===== *****/
 const bank = [
-  { id:1, title:"🏖️ Beach vendor (man + cart)", sentences:[
-    "This picture shows a man walking on the beach while pushing a large cart full of clothes.",
-    "He is wearing a casual shirt and dark trousers, and he looks focused on his work.",
-    "Behind him, the ocean waves look calm and the sky is bright, creating a peaceful atmosphere.",
-    "It seems that he might be selling clothes to tourists who visit the beach; this is common in tourist areas.",
-    "This picture reminds me of people’s hard work and makes me appreciate simple jobs with dignity."
+  { id:1, title:"🌲 Forest trail", sentences:[
+    "This picture shows a narrow dirt path winding through a dense forest.",
+    "No people are visible, but the trail seems to invite hikers to walk surrounded by tall evergreen trees.",
+    "The sunlight filtering through branches suggests it is late afternoon with a calm atmosphere.",
+    "Perhaps this is a hiking trail in a national park designed for nature lovers.",
+    "This photo reminds me how refreshing it feels to escape busy city life outdoors."
   ]},
-  { id:2, title:"🏖️ Friends at the beach", sentences:[
-    "In this photo, I can see a group of young people spending their time together on the beach.",
-    "Most of them are wearing colorful T-shirts and shorts, and they are smiling while posing for the camera.",
-    "In the background, there are umbrellas and calm ocean waves, making the scene cheerful and relaxing.",
-    "Perhaps they are enjoying their holiday to celebrate a special occasion, which often happens in summer.",
-    "Looking at this photo, I feel happy; it reminds me to share good moments with close friends."
+  { id:2, title:"🚤 Lake with boats", sentences:[
+    "This picture shows several wooden boats tied to a dock by a clear mountain lake.",
+    "The boats are neatly arranged, waiting to be used, while calm water reflects the mountains.",
+    "The setting suggests a peaceful alpine scene during daytime under bright skies.",
+    "Perhaps this is a tourist spot where visitors rent boats for sightseeing or fishing.",
+    "This photo gives me a sense of serenity and the joy of being close to nature."
   ]},
-  { id:3, title:"🛒 Street market", sentences:[
-    "This image portrays several people moving through a lively street market.",
-    "They are browsing fresh produce and carrying woven bags while chatting politely with the sellers.",
-    "Hanging lights and handwritten signs appear in the background, creating a warm neighborhood feeling.",
-    "It looks like they are shopping for a family meal, which suggests a community tradition.",
-    "Personally, I find this photo heartwarming; it highlights the importance of local small businesses."
+  { id:3, title:"🚂 Train on viaduct", sentences:[
+    "This picture shows a long train crossing a tall stone bridge with many arches.",
+    "The red carriages and white smoke contrast with the lush green hills.",
+    "The daylight suggests a countryside setting, possibly in Europe during the afternoon.",
+    "Perhaps this is a scenic railway route designed for tourists to enjoy mountain views.",
+    "This photo gives me a sense of adventure and nostalgia about classic train travel."
   ]},
-  { id:4, title:"🎓 Graduation day", sentences:[
-    "This picture shows a group of students wearing black gowns and mortarboards outside a decorated hall.",
-    "They are holding diplomas, exchanging hugs, and smiling brightly for the camera.",
-    "Banners and flowers in the background make the setting look festive and proud.",
-    "The scene suggests a formal graduation ceremony where families celebrate academic success.",
-    "To me, this image represents dedication and reminds us that hard work eventually pays off."
+  { id:4, title:"⛲ City fountain", sentences:[
+    "This picture shows a tall decorative fountain in the middle of a public park.",
+    "Water flows from the statue on top while people sit nearby on the grass.",
+    "Green trees and bright sky suggest a pleasant day in an urban park.",
+    "Perhaps this fountain is a landmark or central meeting spot for visitors.",
+    "This photo feels peaceful and reminds me of the value of public spaces in cities."
   ]},
-  { id:5, title:"🛫 Airport travel", sentences:[
-    "In this photograph, two travelers are standing near large windows that face the runway.",
-    "They are checking their boarding passes, rolling suitcases, and waving toward someone off-camera.",
-    "Departure screens and distant aircraft appear in the background, creating an international atmosphere.",
-    "It seems likely that they are about to board a flight for a holiday or study abroad.",
-    "This picture makes me feel excited; it shows how travel opens minds and creates new opportunities."
+  { id:5, title:"🚇 Crowded subway train", sentences:[
+    "This picture shows a subway train with its doors open at an underground station.",
+    "The train is crowded with passengers, some standing inside and others near the door.",
+    "The bright lights suggest evening travel in a busy metropolitan area.",
+    "Perhaps it is rush hour when most people depend on the subway to commute.",
+    "This photo reminds me of the balance between convenience and crowded travel in cities."
   ]},
-  { id:6, title:"🏫 Classroom project", sentences:[
-    "This picture shows several students gathered around desks covered with books and colored papers.",
-    "They are discussing ideas, taking quick notes, and arranging materials for a group presentation.",
-    "A whiteboard and posters in the background make the classroom look active and creative.",
-    "The scene suggests they are preparing for a project, which requires teamwork and clear communication.",
-    "To me, this image highlights collaboration and the value of learning from one another."
+  { id:6, title:"☕ Outdoor café friends", sentences:[
+    "This picture shows three young people sitting together at an outdoor café table.",
+    "They are smiling, working on a laptop, and sipping drinks in a lively mood.",
+    "The greenery around and daylight suggest a modern café with outdoor seating.",
+    "Perhaps they are students or colleagues discussing a project or enjoying free time.",
+    "This photo feels inspiring, showing how people mix productivity with relaxation."
   ]},
-  { id:7, title:"⛰️ Hiking adventure", sentences:[
-    "This photo shows three hikers standing on a rocky trail overlooking distant mountains.",
-    "They are pointing at the view, tightening their backpack straps, and catching their breath.",
-    "Clear skies and winding paths in the background create a fresh and inspiring atmosphere.",
-    "It seems that they are on a challenging day hike, testing their stamina and patience.",
-    "This picture reminds me to stay active and appreciate nature whenever I can."
+  { id:7, title:"🚲 Bicycles in rain", sentences:[
+    "This picture shows bicycles parked near a tree on a rainy street.",
+    "The wet ground and raindrops make the scene look damp and quiet.",
+    "Closed shops and car headlights suggest an urban area in the afternoon.",
+    "Perhaps the bikes are part of a public bike-sharing system unused due to rain.",
+    "This photo makes me think about how weather changes our commuting choices."
   ]},
-  { id:8, title:"🎂 Birthday celebration", sentences:[
-    "This image shows a family gathered around a table with a large decorated cake.",
-    "They are clapping, smiling at the child in front, and getting ready to sing loudly.",
-    "Colorful balloons and streamers in the background make the room look cheerful and bright.",
-    "It looks like they are celebrating a birthday at home, creating warm memories together.",
-    "Personally, I find this scene touching because it shows love and gratitude in a simple way."
+  { id:8, title:"🚶 Family crossing street", sentences:[
+    "This picture shows a family crossing a street at a pedestrian crosswalk.",
+    "An older man, a woman, and a child are walking carefully while carrying bags.",
+    "Shops, motorbikes, and traffic lights in the background suggest a busy neighborhood.",
+    "Perhaps they are returning from shopping, using the crosswalk for safety.",
+    "This photo reminds me of the importance of family care and pedestrian safety."
   ]},
-  { id:9, title:"🏢 Team meeting", sentences:[
-    "This picture shows colleagues gathered around a laptop in a bright modern office.",
-    "They are reviewing slides, nodding thoughtfully, and jotting down ideas in small notebooks.",
-    "Glass walls and sticky notes in the background create a focused and innovative atmosphere.",
-    "The scene suggests that they are planning a project sprint or preparing for a client presentation.",
-    "To me, this photo represents problem-solving and the power of working as a team."
+  { id:9, title:"🌈 Children & rainbow", sentences:[
+    "This picture shows two young girls walking hand in hand through a wooden gate.",
+    "Behind them stretches a green field with a beautiful rainbow in the sky.",
+    "Stone walls, farmhouses, and trees suggest a peaceful countryside setting.",
+    "Perhaps they are siblings enjoying nature after a rainfall.",
+    "This photo feels calm and hopeful, reminding me of the beauty after storms."
   ]},
-  { id:10, title:"🍽️ Family dinner", sentences:[
-    "In this photo, several relatives are sitting together at a dining table set with homemade dishes.",
-    "They are passing bowls, sharing stories, and laughing softly between bites of food.",
-    "Warm lighting and framed photos in the background make the place feel cozy and personal.",
-    "It seems that they are enjoying a weekend dinner, strengthening their family bonds.",
-    "This image reminds me that simple meals can create meaningful connections and lasting memories."
+  { id:10, title:"🎡 Ferris wheel landmark", sentences:[
+    "This picture shows a giant Ferris wheel standing tall in an urban area.",
+    "The wheel has capsules for passengers and looks like a popular attraction.",
+    "The fading light and clear sky suggest it is taken in the evening.",
+    "Perhaps this landmark is built for sightseeing and tourism.",
+    "This photo inspires me to explore new cities and enjoy their architecture."
+  ]},
+  { id:11, title:"🏯 Traditional temple", sentences:[
+    "This picture shows red wooden temple buildings with curved roofs and a pagoda.",
+    "Visitors are walking in the courtyard, enjoying the heritage site.",
+    "The golden sunset light makes the architecture glow beautifully.",
+    "Perhaps this is a famous cultural landmark in Japan visited by tourists.",
+    "This photo makes me think about history, culture, and spiritual traditions."
+  ]},
+  { id:12, title:"🚋 City trams", sentences:[
+    "This picture shows several green trams moving along a busy city street.",
+    "People are walking, cycling, and crossing while the trams transport passengers.",
+    "Tall buildings and daylight suggest a European city center.",
+    "Perhaps this is a common commuting route supported by efficient transport.",
+    "This photo shows the rhythm of modern city life with organized movement."
+  ]},
+  { id:13, title:"🐄 Cows in field", sentences:[
+    "This picture shows two cows standing in a grassy countryside field.",
+    "They are calmly grazing under the open sky and lush greenery.",
+    "The poles and hills in the background suggest a rural farm setting.",
+    "Perhaps this is farmland where livestock are raised for milk or meat.",
+    "This photo feels peaceful, reminding me of the simplicity of rural life."
+  ]},
+  { id:14, title:"👩‍👧‍👦 Family in kitchen", sentences:[
+    "This picture shows a mother with her two children spending time in the kitchen.",
+    "One child sits on the counter, while another smiles holding food, and the mother stands nearby.",
+    "Bright daylight through the window creates a warm family atmosphere.",
+    "Perhaps they are preparing lunch or sharing a snack together.",
+    "This photo feels joyful and shows how food brings families closer."
+  ]},
+  { id:15, title:"☕ Barista making coffee", sentences:[
+    "This picture shows a barista preparing a cup of coffee at a café counter.",
+    "He is carefully pouring ingredients while surrounded by bottles and a coffee machine.",
+    "The blackboard menu and cozy interior suggest a modern coffee shop.",
+    "Perhaps he is making a fresh order for a customer with attention to detail.",
+    "This photo reminds me how coffee culture creates inviting social spaces."
+  ]},
+  { id:16, title:"👶 Child & books", sentences:[
+    "This picture shows a small child exploring a room filled with plants and books.",
+    "The baby is reaching toward a wooden crate full of books with curiosity.",
+    "Sunlight through the window and wooden floors make the space cozy.",
+    "Perhaps the child is learning by touching objects and discovering new things.",
+    "This photo feels innocent and joyful, reminding me of curiosity in childhood."
+  ]},
+  { id:17, title:"🚇 Subway platform", sentences:[
+    "This picture shows people waiting at an underground subway platform.",
+    "A man in a coat is looking at his phone while others walk with backpacks.",
+    "Fluorescent lights and tiled walls indicate a typical metro station.",
+    "Perhaps these are commuters traveling to work or school during rush hours.",
+    "This photo reminds me of the busy routine of daily urban commuting."
+  ]},
+  { id:18, title:"🥞 French toast with fruit", sentences:[
+    "This picture shows a plate of stacked French toast topped with fruit.",
+    "The toast is layered with banana slices and blueberries, drizzled with syrup and sugar.",
+    "The dark plate and neat presentation suggest a café or homemade breakfast.",
+    "Perhaps this meal was made to enjoy a healthy and delicious start to the day.",
+    "This photo makes me feel delighted and hungry, reminding me of the joy of breakfast."
   ]},
 ];
 const CUSTOM_KEY = 'det_speak_custom_v1';
