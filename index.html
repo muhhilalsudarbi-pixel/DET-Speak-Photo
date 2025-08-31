@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DET — Speak About the Photo (5 sentences, 90s)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app" id="app">
+  <header>
+    <div class="logo">DET</div>
+    <h1>Speak About the Photo — 5 sentences</h1>
+    <div class="sub">90s • Web Speech API • TTS + STT • Duolingo-style</div>
+  </header>
+
+  <div class="toolbar">
+    <div class="controls">
+      <span class="badge">Template Set</span>
+      <select id="setSelect"></select>
+
+      <span class="badge">Sentence</span>
+      <select id="sentSelect">
+        <option value="0">1) Opening – General</option>
+        <option value="1">2) Description – Clothes & Actions</option>
+        <option value="2">3) Background – Setting</option>
+        <option value="3">4) Inference – Context</option>
+        <option value="4">5) Reflection – Closing</option>
+      </select>
+
+      <span class="badge">Options</span>
+      <label class="toggle"><input type="checkbox" id="showTarget"> Show target</label>
+      <label class="toggle"><input type="checkbox" id="guideToggle"> Show guide</label>
+      <label class="toggle"><input type="checkbox" id="fullToggle"> Full Set Mode (1–5)</label>
+      <label class="toggle"><input type="checkbox" id="timerToggle" checked> Use 90s timer</label>
+
+      <button id="startBtn" class="primary">Start</button>
+      <button id="resetBtn" class="ghost">Reset</button>
+      <button id="openCustomBtn" class="ghost">New Template</button>
+    </div>
+    <div class="timer">
+      <span>⏳</span>
+      <div class="count" id="timeCount">90</div>
+    </div>
+  </div>
+
+  <section class="task">
+    <div class="row">
+      <span class="pill" id="setTitle">—</span>
+      <span class="pill" id="partTitle">—</span>
+      <div class="progressbar" style="flex:1;min-width:140px;height:8px"><i id="progressBar"></i></div>
+    </div>
+
+    <div class="panel">
+      <div class="row" style="align-items:flex-start;gap:10px">
+        <div style="flex:1;min-width:260px">
+          <div class="row" style="gap:8px;margin-bottom:10px;flex-wrap:wrap">
+            <button id="listenBtn">🔊 Listen</button>
+            <button id="listenFullBtn">🔊 Listen Full (1–5)</button>
+            <button id="recBtn" class="warn">🎙️ Record</button>
+            <button id="recFullBtn" class="warn">🎙️ Record Full (1–5)</button>
+            <button id="stopBtn" disabled>■ Stop</button>
+            <span class="muted">Language: en-US</span>
+          </div>
+
+          <div style="font-weight:600;margin-bottom:6px;display:flex;align-items:center;gap:8px">
+            <span>🎤 Speak & Compare — word-by-word</span>
+            <span class="muted" style="margin-left:auto;font-size:12px">Legend:
+              <span class="word ok">ok</span>
+              <span class="word bad">bad</span>
+              <span class="word miss">miss</span>
+              <span class="word extra">extra</span>
+            </span>
+          </div>
+
+          <div class="muted" style="font-size:13px">Target</div>
+          <div id="targetLine" class="karaoke" style="min-height:36px"></div>
+
+          <div class="muted" style="margin-top:8px;font-size:13px">Your speech (recognized)</div>
+          <div id="recLine" class="karaoke" style="min-height:36px"></div>
+        </div>
+
+        <div style="width:300px;display:grid;gap:8px">
+          <div class="statgrid">
+            <div class="stat"><div class="h">Accuracy</div><div class="v" id="acc">0%</div></div>
+            <div class="stat"><div class="h">Words (ok/total)</div><div class="v" id="words">0/0</div></div>
+            <div class="stat"><div class="h">Used</div><div class="v" id="used">0s</div></div>
+            <div class="stat"><div class="h">WPM</div><div class="v" id="wpm">0</div></div>
+          </div>
+          <div class="row" style="gap:8px">
+            <button id="prevBtn" class="ghost">◀ Prev</button>
+            <button id="nextBtn" class="primary">Next ▶</button>
+          </div>
+          <button id="againBtn" class="ghost" disabled>Try Again (this)</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+<section class="help">
+  <details open>
+    <summary>🎧 Record to File (MediaRecorder) — 100% free in browser</summary>
+    <div class="row" style="gap:8px;flex-wrap:wrap">
+      <button id="recFileBtn" class="warn">🎙️ Record to File</button>
+      <button id="stopFileBtn" disabled>■ Stop File</button>
+      <button id="downloadBtn" disabled>⬇ Download</button>
+      <span id="fileInfo" class="muted">—</span>
+    </div>
+    <audio id="playback" controls style="margin-top:8px; width:100%"></audio>
+  </details>
+</section>
+
+  <!-- GUIDE -->
+  <section class="help" id="guidePanel" style="display:none">
+    <details open>
+      <summary>🧠 Guided Template (5 sentences)</summary>
+      <div class="guide-grid">
+        <div class="guide-card">
+          <h4>1) Opening</h4>
+          <ul><li>This picture shows…</li><li>In this photo, I can see…</li><li>The image portrays…</li></ul>
+        </div>
+        <div class="guide-card">
+          <h4>2) Description</h4>
+          <ul><li>They are wearing…</li><li>He/She is …-ing…</li><li>The group is … and looks…</li></ul>
+        </div>
+        <div class="guide-card">
+          <h4>3) Background</h4>
+          <ul><li>Behind them… the sky looks…</li><li>In the background, there are…</li><li>In the distance, I can see…</li></ul>
+        </div>
+        <div class="guide-card">
+          <h4>4) Inference</h4>
+          <ul><li>It seems that they might…</li><li>Perhaps they are… because…</li><li>This suggests they are…</li></ul>
+        </div>
+        <div class="guide-card">
+          <h4>5) Reflection</h4>
+          <ul><li>This picture reminds me of…</li><li>Looking at this photo, I feel…</li><li>It highlights the importance of…</li></ul>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- CUSTOM -->
+  <section class="help" id="customPanel" style="display:none">
+    <details open>
+      <summary>⭐ Custom Templates — create your own 5-sentence set</summary>
+      <div class="custom-grid">
+        <input type="text" id="cTitle" placeholder="Title (e.g., 🏟️ Stadium concert)"/>
+        <div class="row5">
+          <textarea id="cS1" rows="3" placeholder="1) Opening"></textarea>
+          <textarea id="cS2" rows="3" placeholder="2) Description"></textarea>
+          <textarea id="cS3" rows="3" placeholder="3) Background"></textarea>
+          <textarea id="cS4" rows="3" placeholder="4) Inference"></textarea>
+          <textarea id="cS5" rows="3" placeholder="5) Reflection"></textarea>
+        </div>
+        <div class="row" style="gap:10px">
+          <button id="saveCustomBtn" class="primary">Save Template</button>
+          <button id="clearCustomBtn" class="ghost">Clear</button>
+        </div>
+        <div class="custom-list" id="customList"></div>
+      </div>
+    </details>
+  </section>
+
+  <footer>
+    <div class="muted">Progress: <span id="progressText">0 sentences • best accuracy —%</span></div>
+    <div class="muted">Made for DET — speaking practice (English only)</div>
+  </footer>
+</div>
+
+<script src="script.js" defer></script>
+</body>
+</html>
