@@ -23,135 +23,209 @@ window.addEventListener('DOMContentLoaded', () => {
 
 /***** ===== DATA: 18 SETS x 5 SENTENCES ===== *****/
 const bank = [
-  { id:1, title:"🌲 Forest trail", sentences:[
-    "This picture shows a narrow dirt path winding through a dense forest.",
-    "No people are visible, but the trail seems to invite hikers to walk surrounded by tall evergreen trees.",
-    "The sunlight filtering through branches suggests it is late afternoon with a calm atmosphere.",
-    "Perhaps this is a hiking trail in a national park designed for nature lovers.",
-    "This photo reminds me how refreshing it feels to escape busy city life outdoors."
-  ]},
-  { id:2, title:"🚤 Lake with boats", sentences:[
-    "This picture shows several wooden boats tied to a dock by a clear mountain lake.",
-    "The boats are neatly arranged, waiting to be used, while calm water reflects the mountains.",
-    "The setting suggests a peaceful alpine scene during daytime under bright skies.",
-    "Perhaps this is a tourist spot where visitors rent boats for sightseeing or fishing.",
-    "This photo gives me a sense of serenity and the joy of being close to nature."
-  ]},
-  { id:3, title:"🚂 Train on viaduct", sentences:[
-    "This picture shows a long train crossing a tall stone bridge with many arches.",
-    "The red carriages and white smoke contrast with the lush green hills.",
-    "The daylight suggests a countryside setting, possibly in Europe during the afternoon.",
-    "Perhaps this is a scenic railway route designed for tourists to enjoy mountain views.",
-    "This photo gives me a sense of adventure and nostalgia about classic train travel."
-  ]},
-  { id:4, title:"⛲ City fountain", sentences:[
-    "This picture shows a tall decorative fountain in the middle of a public park.",
-    "Water flows from the statue on top while people sit nearby on the grass.",
-    "Green trees and bright sky suggest a pleasant day in an urban park.",
-    "Perhaps this fountain is a landmark or central meeting spot for visitors.",
-    "This photo feels peaceful and reminds me of the value of public spaces in cities."
-  ]},
-  { id:5, title:"🚇 Crowded subway train", sentences:[
-    "This picture shows a subway train with its doors open at an underground station.",
-    "The train is crowded with passengers, some standing inside and others near the door.",
-    "The bright lights suggest evening travel in a busy metropolitan area.",
-    "Perhaps it is rush hour when most people depend on the subway to commute.",
-    "This photo reminds me of the balance between convenience and crowded travel in cities."
-  ]},
-  { id:6, title:"☕ Outdoor café friends", sentences:[
-    "This picture shows three young people sitting together at an outdoor café table.",
-    "They are smiling, working on a laptop, and sipping drinks in a lively mood.",
-    "The greenery around and daylight suggest a modern café with outdoor seating.",
-    "Perhaps they are students or colleagues discussing a project or enjoying free time.",
-    "This photo feels inspiring, showing how people mix productivity with relaxation."
-  ]},
-  { id:7, title:"🚲 Bicycles in rain", sentences:[
-    "This picture shows bicycles parked near a tree on a rainy street.",
-    "The wet ground and raindrops make the scene look damp and quiet.",
-    "Closed shops and car headlights suggest an urban area in the afternoon.",
-    "Perhaps the bikes are part of a public bike-sharing system unused due to rain.",
-    "This photo makes me think about how weather changes our commuting choices."
-  ]},
-  { id:8, title:"🚶 Family crossing street", sentences:[
-    "This picture shows a family crossing a street at a pedestrian crosswalk.",
-    "An older man, a woman, and a child are walking carefully while carrying bags.",
-    "Shops, motorbikes, and traffic lights in the background suggest a busy neighborhood.",
-    "Perhaps they are returning from shopping, using the crosswalk for safety.",
-    "This photo reminds me of the importance of family care and pedestrian safety."
-  ]},
-  { id:9, title:"🌈 Children & rainbow", sentences:[
-    "This picture shows two young girls walking hand in hand through a wooden gate.",
-    "Behind them stretches a green field with a beautiful rainbow in the sky.",
-    "Stone walls, farmhouses, and trees suggest a peaceful countryside setting.",
-    "Perhaps they are siblings enjoying nature after a rainfall.",
-    "This photo feels calm and hopeful, reminding me of the beauty after storms."
-  ]},
-  { id:10, title:"🎡 Ferris wheel landmark", sentences:[
-    "This picture shows a giant Ferris wheel standing tall in an urban area.",
-    "The wheel has capsules for passengers and looks like a popular attraction.",
-    "The fading light and clear sky suggest it is taken in the evening.",
-    "Perhaps this landmark is built for sightseeing and tourism.",
-    "This photo inspires me to explore new cities and enjoy their architecture."
-  ]},
-  { id:11, title:"🏯 Traditional temple", sentences:[
-    "This picture shows red wooden temple buildings with curved roofs and a pagoda.",
-    "Visitors are walking in the courtyard, enjoying the heritage site.",
-    "The golden sunset light makes the architecture glow beautifully.",
-    "Perhaps this is a famous cultural landmark in Japan visited by tourists.",
-    "This photo makes me think about history, culture, and spiritual traditions."
-  ]},
-  { id:12, title:"🚋 City trams", sentences:[
-    "This picture shows several green trams moving along a busy city street.",
-    "People are walking, cycling, and crossing while the trams transport passengers.",
-    "Tall buildings and daylight suggest a European city center.",
-    "Perhaps this is a common commuting route supported by efficient transport.",
-    "This photo shows the rhythm of modern city life with organized movement."
-  ]},
-  { id:13, title:"🐄 Cows in field", sentences:[
-    "This picture shows two cows standing in a grassy countryside field.",
-    "They are calmly grazing under the open sky and lush greenery.",
-    "The poles and hills in the background suggest a rural farm setting.",
-    "Perhaps this is farmland where livestock are raised for milk or meat.",
-    "This photo feels peaceful, reminding me of the simplicity of rural life."
-  ]},
-  { id:14, title:"👩‍👧‍👦 Family in kitchen", sentences:[
-    "This picture shows a mother with her two children spending time in the kitchen.",
-    "One child sits on the counter, while another smiles holding food, and the mother stands nearby.",
-    "Bright daylight through the window creates a warm family atmosphere.",
-    "Perhaps they are preparing lunch or sharing a snack together.",
-    "This photo feels joyful and shows how food brings families closer."
-  ]},
-  { id:15, title:"☕ Barista making coffee", sentences:[
-    "This picture shows a barista preparing a cup of coffee at a café counter.",
-    "He is carefully pouring ingredients while surrounded by bottles and a coffee machine.",
-    "The blackboard menu and cozy interior suggest a modern coffee shop.",
-    "Perhaps he is making a fresh order for a customer with attention to detail.",
-    "This photo reminds me how coffee culture creates inviting social spaces."
-  ]},
-  { id:16, title:"👶 Child & books", sentences:[
-    "This picture shows a small child exploring a room filled with plants and books.",
-    "The baby is reaching toward a wooden crate full of books with curiosity.",
-    "Sunlight through the window and wooden floors make the space cozy.",
-    "Perhaps the child is learning by touching objects and discovering new things.",
-    "This photo feels innocent and joyful, reminding me of curiosity in childhood."
-  ]},
-  { id:17, title:"🚇 Subway platform", sentences:[
-    "This picture shows people waiting at an underground subway platform.",
-    "A man in a coat is looking at his phone while others walk with backpacks.",
-    "Fluorescent lights and tiled walls indicate a typical metro station.",
-    "Perhaps these are commuters traveling to work or school during rush hours.",
-    "This photo reminds me of the busy routine of daily urban commuting."
-  ]},
-  { id:18, title:"🥞 French toast with fruit", sentences:[
-    "This picture shows a plate of stacked French toast topped with fruit.",
-    "The toast is layered with banana slices and blueberries, drizzled with syrup and sugar.",
-    "The dark plate and neat presentation suggest a café or homemade breakfast.",
-    "Perhaps this meal was made to enjoy a healthy and delicious start to the day.",
-    "This photo makes me feel delighted and hungry, reminding me of the joy of breakfast."
-  ]},
+  {
+    id: 1,
+    title: "🥞 Makanan (French toast)",
+    sentences: [
+      `1.\tOpening (What + Where)\n👉 This picture shows a plate of stacked French toast topped with fruit.`,
+      `2.\tDescription (What are they doing?)\n👉 The toast is layered with slices of banana and blueberries, drizzled with syrup, and sprinkled with powdered sugar. It looks freshly prepared and ready to be served.`,
+      `3.\tBackground (Where + When)\n👉 The dark plate and clean presentation suggest this could be from a café, restaurant, or homemade breakfast prepared with care. It seems to be a morning or brunch dish.`,
+      `4.\tInference (Why)\n👉 Perhaps this meal was made to enjoy a healthy and delicious start to the day. The combination of bread, fruit, and syrup is both sweet and nutritious.`,
+      `5.\tReflection (How does it feel?)\n👉 This photo makes me feel hungry and delighted. It reminds me of the joy of having a special breakfast and how food can be both comforting and beautiful.`
+    ]
+  },
+  {
+    id: 2,
+    title: "🥾 Pendaki di lembah (Hikers)",
+    sentences: [
+      `1.\tOpening (What + Where)\n👉 This picture shows two hikers walking through a rocky canyon with backpacks on their shoulders.`,
+      `2.\tDescription (What are they doing?)\n👉 One person is stepping across a shallow stream, while the other is walking ahead along the narrow path. They appear to be exploring the natural landscape with confidence and energy.`,
+      `3.\tBackground (Where + When)\n👉 The high cliffs and golden light suggest this is a desert canyon or mountain valley, probably during late afternoon when the sun is setting.`,
+      `4.\tInference (Why)\n👉 Perhaps they are on a hiking trip, enjoying adventure and exercise while discovering new places. It could also be part of a longer journey through a national park or nature reserve.`,
+      `5.\tReflection (How does it feel?)\n👉 This photo makes me think about the thrill of outdoor activities. It feels adventurous and inspiring, reminding me how exploring nature helps us stay healthy and connected to the environment.`
+    ]
+  },
+  {
+    id: 3,
+    title: "📚 Rak buku di taman (Bookshelf)",
+    sentences: [
+      `1.\tOpening (What + Where)\n👉 This picture shows an outdoor bookshelf filled with books, located in a public park.`,
+      `2.\tDescription (What are they doing?)\n👉 A young man is sitting on a bench next to the shelf, reading attentively. His backpack is on the ground, suggesting he may have stopped to rest and enjoy a book.`,
+      `3.\tBackground (Where + When)\n👉 The trees, grass, and sunlight indicate it is a green urban park, probably during a warm afternoon. The bookshelf is placed under the shade, making it inviting for readers.`,
+      `4.\tInference (Why)\n👉 Perhaps this is a community project that encourages people to share and read books freely. It could be a form of public library that makes reading accessible to everyone.`,
+      `5.\tReflection (How does it feel?)\n👉 This photo makes me think about the value of reading in everyday life. It feels inspiring to see books available outdoors, reminding us that learning can happen anywhere.`
+    ]
+  },
+  {
+    id: 4,
+    title: "🚇 Stasiun kereta bawah tanah (Subway)",
+    sentences: [
+      `1.\tOpening (What + Where)\n👉 This picture shows people waiting at an underground subway platform.`,
+      `2.\tDescription (What are they doing?)\n👉 One man in a long coat is standing near a pillar, looking at his phone, while others are walking along the platform. Some people carry backpacks or bags, suggesting they are commuters.`,
+      `3.\tBackground (Where + When)\n👉 The fluorescent lights and tiled walls indicate it is a typical subway station. The setting suggests it might be morning or evening during commuting hours.`,
+      `4.\tInference (Why)\n👉 Perhaps these people are on their way to work, school, or home. The man on his phone could be checking the train schedule or messaging someone while waiting.`,
+      `5.\tReflection (How does it feel?)\n👉 This photo makes me think about the daily rhythm of city life. It feels a bit busy and routine, but it also shows how public transportation connects people in urban areas.`
+    ]
+  },
+  {
+    id: 5,
+    title: "👶 Bayi di dalam rumah (Baby at home)",
+    sentences: [
+      `1.\tOpening (What + Where)\n👉 This picture shows a small child exploring a cozy indoor space filled with plants.`,
+      `2.\tDescription (What are they doing?)\n👉 The baby is leaning toward a wooden crate filled with books, while some books are scattered on the floor. Around them, large potted plants and hanging greenery create a natural atmosphere.`,
+      `3.\tBackground (Where + When)\n👉 The bright sunlight coming through the window suggests it is daytime. The wooden floor and simple furniture make the room feel warm and homely.`,
+      `4.\tInference (Why)\n👉 Perhaps the child is curious and learning by touching objects around them. It could also be a playful moment where the baby is enjoying time in a safe and creative environment.`,
+      `5.\tReflection (How does it feel?)\n👉 This photo makes me think about childhood curiosity. It feels innocent and joyful, reminding me how children discover the world in small, everyday moments.`
+    ]
+  },
+  {
+    id: 6,
+    title: "☕ Barista di kafe",
+    sentences: [
+      `1.\tOpening (What + Where)\n👉 This picture shows a barista working behind the counter in a coffee shop.`,
+      `2.\tDescription (What are they doing?)\n👉 The person is wearing an apron and carefully preparing a cup of coffee, possibly pouring milk or adding ingredients. Around them, there are bottles, jars, and a large coffee machine.`,
+      `3.\tBackground (Where + When)\n👉 The menu board on the wall and the cozy interior suggest it is a modern café, likely during the day when customers are visiting for drinks.`,
+      `4.\tInference (Why)\n👉 Perhaps the barista is making a fresh order for a customer, showing attention to detail and skill. It could also be a specialty coffee shop where presentation is as important as taste.`,
+      `5.\tReflection (How does it feel?)\n👉 This photo makes me think about how much effort goes into preparing a good cup of coffee. It feels inviting and reminds me of the relaxing atmosphere of spending time in a café.`
+    ]
+  },
+  {
+    id: 7,
+    title: "👩‍👧‍👦 Keluarga di dapur (Family in kitchen)",
+    sentences: [
+      `1.\tOpening (What + Where)\n👉 This picture shows a mother with her two children spending time together in the kitchen.`,
+      `2.\tDescription (What are they doing?)\n👉 One child is sitting on the counter while the other is smiling and holding something, and the mother is standing beside them, engaging happily. On the table, there is packaged food and a prepared meal, suggesting they are about to eat or cook together.`,
+      `3.\tBackground (Where + When)\n👉 The bright light from the window suggests it is daytime. The modern kitchen, with shelves of jars and utensils, creates a cozy and family-friendly atmosphere.`,
+      `4.\tInference (Why)\n👉 Perhaps they are preparing lunch or sharing a snack. It could also be a family routine where the mother spends quality time with her children while introducing them to cooking.`,
+      `5.\tReflection (How does it feel?)\n👉 This photo makes me feel warm and joyful. It reminds me of how food brings people together and how small moments in the kitchen can strengthen family bonds.`
+    ]
+  },
+  {
+    id: 8,
+    title: "🐄 Sapi di pedesaan (Cows)",
+    sentences: [
+      `1.\tOpening (What + Where)\n👉 This picture shows two cows standing in a grassy field surrounded by trees and hills.`,
+      `2.\tDescription (What are they doing?)\n👉 The cows appear to be grazing peacefully, enjoying the fresh grass in the open countryside. The lush greenery and bright sky create a calm and natural setting.`,
+      `3.\tBackground (Where + When)\n👉 The landscape suggests a rural area, probably farmland, with a telegraph pole visible in the background. The daylight and soft clouds indicate it is a pleasant afternoon.`,
+      `4.\tInference (Why)\n👉 Perhaps this is part of a farm where livestock are raised for milk or meat. It also shows how important agriculture is for providing food and supporting rural communities.`,
+      `5.\tReflection (How does it feel?)\n👉 This photo makes me think about the simplicity of country life. It feels peaceful and reminds me of the importance of nature and farming in our everyday lives.`
+    ]
+  },
+  {
+    id: 9,
+    title: "🚋 Trem di kota (Tram)",
+    sentences: [
+      `1.\tOpening (What + Where)\n👉 This picture shows a busy city street with several trams moving along the tracks.`,
+      `2.\tDescription (What are they doing?)\n👉 The green trams are transporting passengers while many people are walking on the sidewalks and crossing the street. Some cyclists are also sharing the road, making the scene lively and dynamic.`,
+      `3.\tBackground (Where + When)\n👉 The tall buildings, storefronts, and signs indicate a European city center. The bright daylight suggests it is during working hours when public transport is heavily used.`,
+      `4.\tInference (Why)\n👉 Perhaps this is a common commuting route, and the trams are an essential part of urban transportation. The crowd shows how people rely on efficient public systems in their daily routines.`,
+      `5.\tReflection (How does it feel?)\n👉 This photo makes me think about the rhythm of modern city life. It feels energetic but also shows how well-organized transport helps people move smoothly in a crowded urban environment.`
+    ]
+  },
+  {
+    id: 10,
+    title: "🏯 Kuil tradisional Asia (Temple)",
+    sentences: [
+      `1.\tOpening (What + Where)\n👉 This picture shows a group of traditional temple buildings with curved roofs and bright red wooden structures.`,
+      `2.\tDescription (What are they doing?)\n👉 A few people are walking around the open courtyard, probably visiting as tourists. The architecture features pagoda-style towers and stone lanterns, which stand out beautifully in the evening sunlight.`,
+      `3.\tBackground (Where + When)\n👉 The setting suggests an important cultural or religious site in East Asia, likely Japan. The soft golden light indicates that the photo was taken in the late afternoon near sunset.`,
+      `4.\tInference (Why)\n👉 Perhaps this is a famous landmark where people come to pray, admire historical architecture, or simply enjoy the serene atmosphere. It could also be part of a heritage site that attracts many visitors.`,
+      `5.\tReflection (How does it feel?)\n👉 This photo makes me think about history and tradition. It feels inspiring to see how ancient buildings are preserved, reminding us of the importance of culture and spirituality in modern society.`
+    ]
+  },
+  {
+    id: 11,
+    title: "🎡 Kincir ria di kota (Ferris wheel)",
+    sentences: [
+      `1.\tOpening (What + Where)\n👉 This picture shows a giant Ferris wheel standing tall in an urban area at sunset.`,
+      `2.\tDescription (What are they doing?)\n👉 The wheel has many capsules for passengers, and it looks like a popular attraction where people can enjoy panoramic views of the city. The silhouette of nearby buildings and trees frames the scene.`,
+      `3.\tBackground (Where + When)\n👉 The fading light and clear sky suggest that the photo was taken in the evening. The place looks like a city landmark, visited by both locals and tourists.`,
+      `4.\tInference (Why)\n👉 Perhaps this is a famous observation wheel built to give visitors a unique experience of sightseeing. It could also be a symbol of the city, drawing people for leisure and photography.`,
+      `5.\tReflection (How does it feel?)\n👉 This photo makes me think about travel and exploration. It feels inspiring because landmarks like this remind us how cities combine modern architecture with entertainment.`
+    ]
+  },
+  {
+    id: 12,
+    title: "🌈 Anak-anak & pelangi (Children & rainbow)",
+    sentences: [
+      `1.\tOpening (What + Where)\n👉 This picture shows two young girls walking hand in hand through a wooden gate in a rural countryside area.`,
+      `2.\tDescription (What are they doing?)\n👉 They are dressed in light-colored clothes, and behind them stretches a wide green field. Above the field, a beautiful rainbow appears in the cloudy sky.`,
+      `3.\tBackground (Where + When)\n👉 The setting looks peaceful with stone walls, a farmhouse, and large trees around. The rainbow suggests that the rain has just stopped and the photo was taken in the late afternoon.`,
+      `4.\tInference (Why)\n👉 Perhaps the children are siblings or friends enjoying a walk in nature after a short rainfall. The rainbow adds a magical touch, making the moment memorable.`,
+      `5.\tReflection (How does it feel?)\n👉 This photo makes me feel calm and hopeful. It reminds me of the simple joys of childhood and the beauty of nature that often appears after a storm.`
+    ]
+  },
+  {
+    id: 13,
+    title: "🚶‍♂️ Keluarga menyeberang (Family crossing)",
+    sentences: [
+      `1.\tOpening (What + Where)\n👉 This picture shows a family crossing a street at a pedestrian crosswalk in an urban area.`,
+      `2.\tDescription (What are they doing?)\n👉 An older man is walking beside a woman who is holding a child’s hand. The little girl is stepping carefully while the adults carry shopping bags, suggesting they are returning from the market.`,
+      `3.\tBackground (Where + When)\n👉 Behind them, there are shops, motorbikes, and other pedestrians. The traffic light is visible with a countdown timer, showing it is safe for them to cross. The daylight indicates it might be during the afternoon.`,
+      `4.\tInference (Why)\n👉 Perhaps this is a typical busy neighborhood where families run errands and shop for daily necessities. The crosswalk ensures safety while navigating the traffic.`,
+      `5.\tReflection (How does it feel?)\n👉 This photo makes me think about the importance of safety and togetherness. It feels heartwarming to see different generations walking side by side, showing both care and responsibility in daily life.`
+    ]
+  },
+  {
+    id: 14,
+    title: "🌧️ Sepeda saat hujan (Bikes in rain)",
+    sentences: [
+      `1.\tOpening (What + Where)\n👉 This picture shows a couple of bicycles parked near a tree on a rainy street.`,
+      `2.\tDescription (What are they doing?)\n👉 The ground is wet, and raindrops are clearly visible, while cars and a bus can be seen passing by in the background. The bicycles appear unused, leaning against a stand and waiting for riders.`,
+      `3.\tBackground (Where + When)\n👉 The closed shop and the headlights of vehicles suggest it is in an urban area, perhaps during a rainy afternoon or evening.`,
+      `4.\tInference (Why)\n👉 Perhaps these bikes are part of a public bike-sharing system. Because of the heavy rain, people may prefer using cars or buses instead of riding bicycles.`,
+      `5.\tReflection (How does it feel?)\n👉 This photo makes me think about the challenges of commuting in bad weather. It feels realistic and reminds me how weather can influence our choices of transportation in daily life.`
+    ]
+  },
+  {
+    id: 15,
+    title: "☕ Anak muda di kafe (Youths at cafe)",
+    sentences: [
+      `1.\tOpening (What + Where)\n👉 This picture shows three young people sitting together at an outdoor café table.`,
+      `2.\tDescription (What are they doing?)\n👉 They are enjoying drinks while working on a laptop. One of them is smiling at the screen, another is sipping from a cup, and the third is typing, suggesting they are collaborating or studying.`,
+      `3.\tBackground (Where + When)\n👉 The setting is a modern café with greenery around, indicating it could be in a city area with outdoor seating. The bright light suggests it is daytime, maybe a sunny afternoon.`,
+      `4.\tInference (Why)\n👉 Perhaps these people are university students or colleagues meeting to discuss a project. It could also be friends combining leisure with some work or online browsing.`,
+      `5.\tReflection (How does it feel?)\n👉 This photo reminds me of how cafés have become social and creative spaces. It feels lively and inspiring, showing how people mix productivity with relaxation in a pleasant atmosphere.`
+    ]
+  },
+  {
+    id: 16,
+    title: "🚇 Kereta bawah tanah ramai (Crowded subway)",
+    sentences: [
+      `1.\tOpening (What + Where)\n👉 This picture shows a subway train with its doors open at an underground station.`,
+      `2.\tDescription (What are they doing?)\n👉 The train is crowded with passengers, some standing inside while others wait near the door. A man in dark clothing is about to step out, and people behind him are looking outside.`,
+      `3.\tBackground (Where + When)\n👉 The interior lights suggest it is evening or nighttime, and the setting looks like a busy metropolitan city where public transportation is heavily used.`,
+      `4.\tInference (Why)\n👉 Perhaps people are commuting home after work, which explains why the train is so full. It could also be rush hour when most people depend on the subway to save time in traffic.`,
+      `5.\tReflection (How does it feel?)\n👉 This photo reminds me of how important public transportation is in modern cities. It makes me think about the balance between convenience and the challenges of crowded travel.`
+    ]
+  },
+  {
+    id: 17,
+    title: "⛲ Air mancur di taman (Fountain in park)",
+    sentences: [
+      `1.\tOpening (What + Where)\n👉 This picture shows a tall decorative fountain in the middle of a public park.`,
+      `2.\tDescription (What are they doing?)\n👉 The fountain has multiple tiers with a statue on top, and water seems to be flowing down into the large basin. In front of it, a few people are sitting on the grass, probably relaxing and chatting.`,
+      `3.\tBackground (Where + When)\n👉 The background is filled with green trees and colorful foliage, suggesting it is a pleasant day in an urban park, possibly during spring or summer.`,
+      `4.\tInference (Why)\n👉 Perhaps this fountain is a landmark or a central meeting spot where people come to enjoy fresh air, take photos, or spend leisure time outdoors.`,
+      `5.\tReflection (How does it feel?)\n👉 This photo makes me think about the beauty of city parks. It feels peaceful and reminds me how important public spaces are for relaxation and social interaction in busy urban life.`
+    ]
+  },
+  {
+    id: 18,
+    title: "🚂 Kereta di jembatan (Train on bridge)",
+    sentences: [
+      `1.\tOpening (What + Where)\n👉 This picture shows a long train crossing a tall stone bridge with multiple arches in the middle of green hills.`,
+      `2.\tDescription (What are they doing?)\n👉 The train is moving forward while releasing a stream of white smoke, and the carriages appear bright red, making a strong contrast with the lush landscape.`,
+      `3.\tBackground (Where + When)\n👉 The scenery suggests a countryside setting, possibly in Europe, with rolling hills and scattered trees. The daylight and shadows indicate it might be taken in the afternoon.`,
+      `4.\tInference (Why)\n👉 Perhaps this is a famous railway line for tourists, designed to give passengers a scenic view of the mountains and valleys. It may even be part of a historic route.`,
+      `5.\tReflection (How does it feel?)\n👉 This photo gives me a sense of adventure and nostalgia. It makes me think about how trains connect people across beautiful landscapes while also reminding us of the romance of old-fashioned travel.`
+    ]
+  }
 ];
+
 const CUSTOM_KEY = 'det_speak_custom_v1';
 let customBank = [];
+
 
 /***** ===== STATE & CONST ===== *****/
 const PART5 = [
